@@ -26,6 +26,13 @@ function add_my_scripts()
         date('YmdHis'),
         true
     );
+    
+    wp_enqueue_script(
+        'main_handler',
+        plugins_url('product-listing/js/main.js'),
+        date('YmdHis'),
+        true
+    );
 
     // PHP változók hozzáadása a scripthez
     wp_localize_script(

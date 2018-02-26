@@ -26,10 +26,7 @@ add_action('wp_ajax_nopriv_crud_action', 'crud_action_callback');
 
 function add_product_list() {
     ob_start();
-    
-        include 'view/index.php';
-    
-    
+        include 'view/index.php';    
     $content = ob_get_contents();
     ob_clean();
     return $content;
