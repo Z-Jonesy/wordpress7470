@@ -44,7 +44,7 @@ class ProductModel
     }
 
     //frissítés
-    public function update($data = null, $where = '', $limit = 1)
+    public function update($data = null, $where = array(), $limit = 1)
     {
         global $wpdb;
         if (is_null($data)) {
@@ -54,7 +54,9 @@ class ProductModel
             return $this->printError('No where érték in update');
         }
         return $wpdb->update(
-            $this->table, $data, $where . "LIMIT $limit"
+            $this->table,
+             $data,
+             $where
         );
     }
 

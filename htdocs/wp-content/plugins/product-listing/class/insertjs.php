@@ -10,27 +10,33 @@
 function add_my_scripts()
 {
 
-    // az ajax handler script beszúrása az oldal láblécébe
+  /*  // az ajax handler script beszúrása az oldal láblécébe
     wp_enqueue_script(
         'b_handler',
         plugins_url('product-listing/js/bootstrap.min.js'),
         array('jquery'),
-        date('YmdHis'),
-        true
+        date('YmdHis')
     );
 
     wp_enqueue_script(
         'angular_handler',
         plugins_url('product-listing/js/angular.min.js'),
         array('jquery'),
-        date('YmdHis'),
-        true
+        date('YmdHis')
     );
     
     wp_enqueue_script(
         'main_handler',
         plugins_url('product-listing/js/main.js'),
         date('YmdHis'),
+        true
+    );  */
+
+    wp_enqueue_script(
+        'main-handler',
+        plugins_url( 'product-listing/js/js.php'),
+        date('YmdHis'),
+        array('jquery'),
         true
     );
 

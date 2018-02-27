@@ -11,6 +11,7 @@ class ProductController
 
     private $method;
     private $model;
+    private $input;
     private $methodPairs = array(
         'get' => 'get',
         'post' => 'update',
@@ -26,17 +27,15 @@ class ProductController
         $this->getMethod();
 
         // input adatok összegyűjtése
-        $input = $this->getInput();
+        $this->getInput();
 
         // modell metódus hívása
         switch ($this->method) {
             case 'get':
-                if (isset($input->id)) {
-                    exit(json_encode($input));
-                    $result = $this->model->get($input->id);
-                } else {
-                    $result = $this->model->get();
-                }
+            $result = $this.handleGet($input)
+            case 'post':
+            $result = $this.handlePost($input)
+                
                 break;
             default:
                 break;
@@ -44,6 +43,25 @@ class ProductController
 
         echo json_encode($result);
         wp_die();
+    }
+
+    private function handleGet() {
+        if (isset( $this->input->id)) {
+                    return $this->model->get($this->input->id);
+                } else {
+                    return $this->model->get();
+                }
+    }
+    private function handlePost() {
+        $id = $this->input->id;
+        $where = array('id' => $id);
+        $data = array();
+        foreach ($input->data as $key => $value) {
+            $data[$key] = $value;
+        }
+        return $this--model->update(
+            $data,
+            $where);
     }
 
     private function getMethod()
@@ -65,6 +83,7 @@ class ProductController
                 $input->{$key} = $value;
             }
         }
+        $this->input = $input;
 
     }
 }
