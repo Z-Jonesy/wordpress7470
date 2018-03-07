@@ -53,10 +53,10 @@ class ProductController
                 }
     }
     private function handlePost() {
-        $id = $this->input->id;
+        $id = $this->input->data->id;
         $where = array('id' => $id);
         $data = array();
-        foreach ($input->data as $key => $value) {
+        foreach ($this->input->data as $key => $value) {
             $data[$key] = $value;
         }
         return $this--model->update(
